@@ -2594,9 +2594,10 @@ block_217:
         register u32 close_mask_200_r4 asm("r4") = 0x200;
         register u32 close_mask_copy_r1 asm("r1") = close_mask_200_r4;
 
+        asm volatile("" : "+r"(close_mask_200_r4));
         asm volatile("" : "+r"(close_event_r0),
-                          "+r"(close_mask_200_r4),
-                          "+r"(close_mask_copy_r1));
+                        "+r"(close_mask_copy_r1));
+
         if (close_event_r0 & close_mask_copy_r1) {
             goto block_223;
         }
@@ -2696,8 +2697,8 @@ case MENU_YES_NO:
     }
     case8_map = &D_0200A8A0;
     asm volatile("" : "=&r"(case8_map_guard_r5),
-                      "=&r"(case8_map_guard_r6),
-                      "+r"(case8_map));
+                  "=&r"(case8_map_guard_r6));
+    asm volatile("" : "+r"(case8_map));
     D_0200A88C = CreateSprite(0x080ED8F8, 0x080ED92C, 0U,
         (s16) (({
             register s32 case8_x_r3 asm("r3") = (u16) case8_map->x;

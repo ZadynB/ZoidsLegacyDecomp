@@ -1241,7 +1241,7 @@ TEXT_O2 int text_layout_simple_peek(
     LineGeometry *kept = &SCAN_WORKSPACE->geometry;
 #else
     LineGeometry line_storage;
-    LineGeometry kept_storage;
+    LineGeometry kept_storage = {0};
     LineGeometry *line = &line_storage;
     LineGeometry *kept = &kept_storage;
 #endif
